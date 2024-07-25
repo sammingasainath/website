@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
+import Image from 'next/image'
 
 export default function Navbar() {
   return (
@@ -8,7 +9,17 @@ export default function Navbar() {
         <div className="flex justify-between h-16">
           <div className="flex">
             <Link href="/" className="flex-shrink-0 flex items-center">
-              fhaida
+              {/* Add logo image */}
+              <div className="flex flex-row items-center">
+              <Image
+                src="/images/logo.png" // Path to your logo image
+                alt="Fhaida Logo"
+                width={60} // Adjust width as needed
+                height={65} // Adjust height as needed
+                className="mr-2" // Optional: adds some margin to the right
+              /> {/* Adjust height as needed */}
+                <span className="mt-1 text-xl font-bold">Fhaida.Com</span> {/* Text below logo */}
+              </div>
             </Link>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
               <Link href="/about" className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium">
