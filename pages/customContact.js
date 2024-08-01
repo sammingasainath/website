@@ -11,7 +11,8 @@ export default function ContactPage() {
     <div className="container mx-auto px-4 py-8">
       <Card className="max-w-md mx-auto">
         <CardHeader>
-          <CardTitle>Contact Us</CardTitle>
+        
+          <CardTitle>Contact Us for Custom Software</CardTitle>
           <CardDescription>Get in touch with us via WhatsApp for any inquiries.</CardDescription>
         </CardHeader>
         <CardContent>

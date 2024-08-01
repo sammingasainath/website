@@ -1,6 +1,7 @@
 import Layout from '../components/Layout'
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import Link from 'next/link'
 
 export default function Products() {
   return (
@@ -27,7 +28,9 @@ export default function Products() {
                   <p>Our flagship AI-powered chatbot platform, capable of handling complex customer interactions.</p>
                 </CardContent>
                 <CardFooter>
-                  <Button>Explore</Button>
+                  <Link href="/fhaidaChat">
+                    <Button>Explore</Button>
+                  </Link>
                 </CardFooter>
               </Card>
               <Card>
@@ -38,7 +41,9 @@ export default function Products() {
                   <p>A comprehensive CRM solution that adapts to your business, not the other way around.</p>
                 </CardContent>
                 <CardFooter>
-                  <Button>Explore</Button>
+                  <Link href="/fhaidaCRM">
+                    <Button>Explore</Button>
+                  </Link>
                 </CardFooter>
               </Card>
               <Card>
@@ -49,7 +54,9 @@ export default function Products() {
                   <p>Intelligent billing software that simplifies financial management and forecasting.</p>
                 </CardContent>
                 <CardFooter>
-                  <Button>Explore</Button>
+                  <Link href="/fhaidaBill">
+                    <Button>Explore</Button>
+                  </Link>
                 </CardFooter>
               </Card>
               <Card>
@@ -60,7 +67,9 @@ export default function Products() {
                   <p>Our automation suite that transforms manual processes into efficient, error-free workflows.</p>
                 </CardContent>
                 <CardFooter>
-                  <Button>Explore</Button>
+                  <Link href="/fhaidaAuto">
+                    <Button>Explore</Button>
+                  </Link>
                 </CardFooter>
               </Card>
               <Card>
@@ -71,7 +80,9 @@ export default function Products() {
                   <p>Next-gen inventory management system with predictive analytics and real-time tracking.</p>
                 </CardContent>
                 <CardFooter>
-                  <Button>Explore</Button>
+                  <Link href="/fhaidaStock">
+                    <Button>Explore</Button>
+                  </Link>
                 </CardFooter>
               </Card>
               <Card>
@@ -82,7 +93,9 @@ export default function Products() {
                   <p>Our integration platform that ensures all your business tools work seamlessly together.</p>
                 </CardContent>
                 <CardFooter>
-                  <Button>Explore</Button>
+                  <Link href="/fhaidaIntegrate">
+                    <Button>Explore</Button>
+                  </Link>
                 </CardFooter>
               </Card>
             </div>

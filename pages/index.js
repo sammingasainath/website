@@ -2,6 +2,7 @@ import Layout from '../components/Layout'
 import Hero from '../components/Hero'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -29,7 +30,11 @@ export default function Home() {
                   <p>Engage your customers 24/7 with AI-powered chatbots that understand and respond like humans.</p>
                 </CardContent>
                 <CardFooter>
-                  <Button>Learn More</Button>
+                  <Link href="/fhaidaChat">
+                  <Button>
+                    Learn More
+                    </Button>
+                    </Link>
                 </CardFooter>
               </Card>
               <Card>
@@ -40,7 +45,9 @@ export default function Home() {
                   <p>Streamline your customer relationships with our intuitive and powerful CRM platforms.</p>
                 </CardContent>
                 <CardFooter>
+                <Link href="/fhaidaCRM">
                   <Button>Learn More</Button>
+                  </Link>
                 </CardFooter>
               </Card>
               <Card>
@@ -51,7 +58,9 @@ export default function Home() {
                   <p>Boost productivity and efficiency with our cutting-edge automation solutions.</p>
                 </CardContent>
                 <CardFooter>
+                <Link href="/customContact">
                   <Button>Learn More</Button>
+                  </Link>
                 </CardFooter>
               </Card>
             </div>
