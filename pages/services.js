@@ -32,13 +32,13 @@ const services = [
     title: "Sentient Inventory",
     description: "Inventory that thinks for itself. Predict demand, optimize supply chains, and eliminate waste with uncanny precision.",
     image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    video: "https://assets.mixkit.co/videos/4547/4547-2160.mp4"
+    video: "https://assets.mixkit.co/videos/4705/4705-2160.mp4"
   },
   {
     title: "Mind-Meld Consulting",
     description: "We don't just consult; we integrate. Our experts become one with your team, catalyzing transformations you never thought possible.",
     image: "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
-    video: "https://assets.mixkit.co/videos/preview/mixkit-group-of-people-having-a-business-meeting-in-the-office-42586-large.mp4"
+    video: "https://assets.mixkit.co/videos/4547/4547-2160.mp4"
   }
 ]
 
