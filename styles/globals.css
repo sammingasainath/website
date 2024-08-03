@@ -25,6 +25,12 @@
     --ring: 215 20.2% 65.1%;
     --radius: 0.5rem;
   }
+
+  /* styles/globals.css */
+.text-shadow-lg {
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
+}
+
   
   .dark {
     --background: 224 71% 4%;

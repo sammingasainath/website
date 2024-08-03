@@ -1,43 +1,81 @@
+import { useEffect, useState } from 'react'
 import { Button } from "@/components/ui/button"
 import Link from 'next/link'
+import { motion, useViewportScroll, useTransform } from 'framer-motion'
 
 export default function Hero() {
+  const [scrollY, setScrollY] = useState(0)
+  const { scrollYProgress } = useViewportScroll()
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8])
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <div className="relative bg-white overflow">
-      <div className="max-w-7xl mx-auto">
-        <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-          <main className="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-            <div className="sm:text-center lg:text-left">
-              <h1 className="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-                <span className="block xl:inline">Revolutionizing</span>{' '}
-                <span className="block text-indigo-600 xl:inline">Business Software</span>
-              </h1>
-              <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                Empowering businesses with cutting-edge chatbots, CRMs, and automation solutions. Experience the future of software, tailored for your success.
-              </p>
-              <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-                <div className="rounded-md shadow">
-                  <Link href="/contact">
-                    <Button className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
-                      Get started
-                    </Button>
-                  </Link>
-                </div>
-                <div className="mt-3 sm:mt-0 sm:ml-3">
-                  <Link href="/products">
-                    <Button variant="outline" className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10">
-                      Learn more
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </main>
+    <div className="relative h-screen flex items-center justify-center overflow-hidden">
+      <motion.video
+        className="absolute w-full h-full object-cover filter blur-md brightness-50"
+        style={{ opacity, scale }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        autoPlay
+        loop
+        muted
+        playsInline
+      >
+        <source src="https://assets.mixkit.co/videos/918/918-1080.mp4" type="video/mp4" />
+      </motion.video>
+      <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+      <motion.div 
+        className="relative z-10 text-center text-white px-4"
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+      >
+        <h1 className="text-5xl sm:text-6xl md:text-7xl font-extrabold mb-4">
+          <span className="block">Revolutionizing</span>
+          <span className="block text-gradient bg-gradient-to-r from-purple-400 to-pink-600">Business Software</span>
+        </h1>
+        <p className="text-xl sm:text-2xl mb-8 max-w-3xl mx-auto text-shadow-lg">
+          Empowering businesses with cutting-edge chatbots, CRMs, and automation solutions. Experience the future of software, tailored for your success.
+        </p>
+        <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+          <Link href="/contact">
+            <Button className="px-8 py-3 bg-gradient-to-r from-purple-500 to-pink-600 hover:from-pink-600 hover:to-purple-500 text-lg">
+              Get started
+            </Button>
+          </Link>
+          <Link href="/products">
+            <Button variant="outline" className="px-8 py-3 border-2 border-white text-white bg-gray-800 hover:bg-gray-700 text-lg shadow-lg">
+              Learn more
+            </Button>
+          </Link>
         </div>
-      </div>
-      <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-        <img className="h-40 w-full object-cover sm:h-48 md:h-56 lg:w-full lg:h-full" src="https://i.ibb.co/xzpQJDJ/a10526b7-955e-4265-bffe-9d6678a83d5e.jpg" alt="" />
-      </div>
+      </motion.div>
+      <motion.div 
+        className="absolute bottom-0 left-0 right-0 text-center pb-8"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 1 }}
+      >
+        <motion.div 
+          className="w-8 h-8 border-2 border-white rounded-full mx-auto"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+        >
+          <motion.div 
+            className="w-1 h-3 bg-white mx-auto mt-2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5, duration: 1 }}
+          />
+        </motion.div>
+      </motion.div>
     </div>
   )
 }
