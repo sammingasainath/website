@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Link } from 'react'
 import Layout from '../components/Layout'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
@@ -143,8 +143,9 @@ export default function Services() {
                 className="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-600 text-white text-lg font-semibold rounded-full hover:from-pink-600 hover:to-purple-500 transition duration-300"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-              >
+              ><Link href="/contact">
                 Initiate Transformation
+                </Link>
               </motion.button>
             </motion.div>
           </div>

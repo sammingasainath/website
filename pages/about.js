@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, Link  } from 'react';
 import Layout from '../components/Layout';
 import { motion, useScroll, useTransform, useSpring, useInView, useMotionValue, useVelocity, useAnimationFrame } from 'framer-motion';
 import { Button } from "@/components/ui/button";
@@ -201,10 +201,13 @@ export default function About() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
+              
               <Button
                 className="bg-gradient-to-r from-purple-500 to-pink-500 text-white hover:from-pink-500 hover:to-purple-500 transition duration-300"
               >
+                <Link href="/contact">
                 Start Your Journey
+                </Link>
               </Button>
             </motion.div>
           </div>
