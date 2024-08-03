@@ -145,7 +145,7 @@ export default function About() {
               initial="hidden"
               whileInView="visible"
             >
-              We envision a world where business software is as intuitive, beautiful, and game-changing as the best consumer products. At fhaida, we`re not just another software company - we`re revolutionaries, dreamers, and innovators.
+              We envision a world where business software is as intuitive, beautiful, and game-changing as the best consumer products. At fhaida, we`&apos;`re not just another software company - we`&apos;`re revolutionaries, dreamers, and innovators.
             </motion.p>
           </div>
         </div>
@@ -165,7 +165,7 @@ export default function About() {
                   transition={{ delay: index * 0.2 }}
                 >
                   <h3 className="text-2xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">{title}</h3>
-                  <p className="text-gray-300">Our {title.toLowerCase()} don`t just work, they revolutionize. Experience the future of business technology.</p>
+                  <p className="text-gray-300">Our {title.toLowerCase()} don`&apos;`t just work, they revolutionize. Experience the future of business technology.</p>
                 </motion.div>
               ))}
             </div>
@@ -195,7 +195,7 @@ export default function About() {
               initial="hidden"
               whileInView="visible"
             >
-              We're not just building software. We`re crafting the future of business, one line of code at a time.
+              We`&apos;`re not just building software. We`&apos;`re crafting the future of business, one line of code at a time.
             </motion.p>
             <motion.div
               whileHover={{ scale: 1.05 }}

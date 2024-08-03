@@ -80,7 +80,7 @@ export default function Services() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
             >
-              We don`t just meet the future; we create it. Experience services that redefine possibility.
+              We don`&apos;`t just meet the future; we create it. Experience services that redefine possibility.
             </motion.p>
 
             <div className="relative h-[70vh] mb-20 overflow-hidden rounded-xl shadow-2xl" ref={ref}>
