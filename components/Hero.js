@@ -50,7 +50,7 @@ export default function Hero() {
               Get started
             </Button>
           </Link>
-          <Link href="/products">
+          <Link href="/services">
             <Button variant="outline" className="px-8 py-3 border-2 border-white text-white bg-gray-800 hover:bg-gray-700 text-lg shadow-lg">
               Learn more
             </Button>
