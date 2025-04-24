@@ -173,6 +173,15 @@
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+  position: relative;
 }
 
 /* Glass morphism */
@@ -208,4 +217,389 @@ html {
 .hover\:text-shadow-glow:hover {
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
                0 0 20px rgba(147, 51, 234, 0.3);
+}
+
+/* 3D Slide Transitions */
+@keyframes slide3DFromRight {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) rotateY(-30deg) translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1000px) rotateY(0) translateX(0);
+  }
+}
+
+@keyframes slide3DFromLeft {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) rotateY(30deg) translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1000px) rotateY(0) translateX(0);
+  }
+}
+
+@keyframes slide3DToRight {
+  from {
+    opacity: 1;
+    transform: perspective(1000px) rotateY(0) translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: perspective(1000px) rotateY(30deg) translateX(100px);
+  }
+}
+
+@keyframes slide3DToLeft {
+  from {
+    opacity: 1;
+    transform: perspective(1000px) rotateY(0) translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: perspective(1000px) rotateY(-30deg) translateX(-100px);
+  }
+}
+
+.animate-slide-3d-from-right {
+  animation: slide3DFromRight 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  transform-origin: center;
+  backface-visibility: hidden;
+}
+
+.animate-slide-3d-from-left {
+  animation: slide3DFromLeft 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  transform-origin: center;
+  backface-visibility: hidden;
+}
+
+.animate-slide-3d-to-right {
+  animation: slide3DToRight 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  transform-origin: center;
+  backface-visibility: hidden;
+}
+
+.animate-slide-3d-to-left {
+  animation: slide3DToLeft 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  transform-origin: center;
+  backface-visibility: hidden;
+}
+
+/* 3D Card Effect */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card-3d:hover {
+  transform: perspective(1000px) rotateY(5deg) rotateX(5deg) translateZ(10px);
+}
+
+.card-3d::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  transform: translateZ(-1px);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* 3D Transform Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* Enhanced Card Hover Effect */
+.card-3d-hover {
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card-3d-hover:hover {
+  transform: perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.05);
+  box-shadow: 0 25px 50px -12px rgba(147, 51, 234, 0.25);
+}
+
+/* Smooth Shadow Transition */
+.shadow-smooth {
+  transition: box-shadow 0.3s ease;
+}
+
+.shadow-smooth:hover {
+  box-shadow: 0 20px 40px -15px rgba(147, 51, 234, 0.3);
+}
+
+/* Scroll-based 3D Animations */
+@keyframes scrollFadeIn3D {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) rotateX(10deg) translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(0) translateY(0);
+  }
+}
+
+.scroll-fade-in-3d {
+  opacity: 0;
+  animation: scrollFadeIn3D 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+/* Enhanced 3D Depth */
+.depth-layer-1 {
+  transform: translateZ(50px);
+}
+
+.depth-layer-2 {
+  transform: translateZ(100px);
+}
+
+.depth-layer-3 {
+  transform: translateZ(150px);
+}
+
+/* Enhanced 3D Transform Utilities */
+.transform-smooth {
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Perspective Container with improved performance */
+.perspective-container {
+  transform-style: preserve-3d;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+  isolation: isolate;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.perspective-container > * {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Improved layer handling with hardware acceleration */
+.z-layer-base {
+  z-index: 0;
+  position: relative;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.z-layer-content {
+  z-index: 1;
+  position: relative;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.z-layer-overlay {
+  z-index: 10;
+  position: relative;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.z-layer-top {
+  z-index: 50;
+  position: relative;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+/* Prevent flickering and improve performance */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Cursor Core */
+.cursor-dot {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: rgb(226, 232, 255);
+  border-radius: 50%;
+  z-index: 9999;
+  box-shadow: 0 0 15px rgba(147, 196, 255, 0.8);
+  animation: breathe 2s ease-in-out infinite;
+}
+
+/* Rotating Spokes */
+.arc-reactor-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.arc-reactor-ring::before {
+  content: '';
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(147, 196, 255, 0.9) 15deg,
+    transparent 30deg,
+    transparent 45deg,
+    rgba(147, 196, 255, 0.9) 60deg,
+    transparent 75deg,
+    transparent 90deg,
+    rgba(147, 196, 255, 0.9) 105deg,
+    transparent 120deg,
+    transparent 135deg,
+    rgba(147, 196, 255, 0.9) 150deg,
+    transparent 165deg,
+    transparent 180deg,
+    rgba(147, 196, 255, 0.9) 195deg,
+    transparent 210deg,
+    transparent 225deg,
+    rgba(147, 196, 255, 0.9) 240deg,
+    transparent 255deg,
+    transparent 270deg,
+    rgba(147, 196, 255, 0.9) 285deg,
+    transparent 300deg,
+    transparent 315deg,
+    rgba(147, 196, 255, 0.9) 330deg,
+    transparent 345deg,
+    transparent 360deg
+  );
+  animation: 
+    rotateRing 4s linear infinite,
+    breatheGlow 2s ease-in-out infinite;
+  mask: radial-gradient(circle at center, 
+    transparent 35%,
+    black 35% 90%,
+    transparent 90%
+  );
+  -webkit-mask: radial-gradient(circle at center, 
+    transparent 35%,
+    black 35% 90%,
+    transparent 90%
+  );
+}
+
+/* Segments Background */
+.arc-reactor-segments {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+.arc-reactor-segments::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: repeating-conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 40deg,
+    rgba(147, 51, 234, 0.1) 40deg,
+    rgba(147, 51, 234, 0.1) 45deg
+  );
+  mask: radial-gradient(circle at center, 
+    transparent 35%,
+    black 35% 90%,
+    transparent 90%
+  );
+  -webkit-mask: radial-gradient(circle at center, 
+    transparent 35%,
+    black 35% 90%,
+    transparent 90%
+  );
+}
+
+@keyframes rotateRing {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes breathe {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(147, 196, 255, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(147, 196, 255, 1);
+  }
+}
+
+@keyframes breatheGlow {
+  0%, 100% {
+    opacity: 0.7;
+    filter: brightness(0.8) blur(0.3px);
+    transform: scale(0.95) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    filter: brightness(1.2) blur(0px);
+    transform: scale(1.05) rotate(180deg);
+  }
+}
+
+/* Performance Optimizations */
+.cursor-dot,
+.arc-reactor-ring {
+  will-change: transform, opacity, filter;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+}
+
+/* Hide default cursor */
+* {
+  cursor: none !important;
+}
+
+/* Restore default cursor for inputs */
+input, 
+textarea, 
+[contenteditable="true"] {
+  cursor: text !important;
 }

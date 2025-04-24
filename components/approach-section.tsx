@@ -51,6 +51,12 @@ const steps = [
 
 const ApproachSection = () => {
   const [activeStep, setActiveStep] = useState(1)
+  const [slideDirection, setSlideDirection] = useState<'left' | 'right'>('right')
+
+  const handleStepChange = (newStep: number) => {
+    setSlideDirection(newStep > activeStep ? 'right' : 'left')
+    setActiveStep(newStep)
+  }
 
   return (
     <div className="grid md:grid-cols-2 gap-8">
@@ -59,21 +65,21 @@ const ApproachSection = () => {
           <motion.div
             key={step.id}
             className={`
-              p-3 rounded-lg cursor-pointer transition-all duration-300
+              p-3 rounded-lg cursor-pointer transition-all duration-300 card-3d-hover shadow-smooth
               ${
                 activeStep === step.id
                   ? "bg-gradient-to-r from-purple-900/50 to-pink-900/50 border-l-4 border-purple-500"
                   : "bg-black/40 hover:bg-black/60 border-l-4 border-transparent"
               }
             `}
-            onClick={() => setActiveStep(step.id)}
+            onClick={() => handleStepChange(step.id)}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <div className="flex items-start">
+            <div className="flex items-start transform-style-preserve-3d">
               <div
                 className={`
-                w-8 h-8 rounded-full flex items-center justify-center mr-3 shrink-0
+                w-8 h-8 rounded-full flex items-center justify-center mr-3 shrink-0 transition-all duration-300
                 ${activeStep === step.id ? "bg-purple-500 text-white" : "bg-purple-900/30 text-purple-400"}
               `}
               >
@@ -91,20 +97,40 @@ const ApproachSection = () => {
       <div className="relative h-[300px] md:h-auto">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 to-pink-900/20 rounded-lg"></div>
 
-        <div className="relative h-full flex items-center justify-center p-6">
+        <div className="relative h-full flex items-center justify-center p-6 perspective-1000">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeStep}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="text-center"
+              initial={{ 
+                opacity: 0,
+                transform: `perspective(1000px) rotateY(${slideDirection === 'right' ? '-30deg' : '30deg'}) translateZ(-100px)` 
+              }}
+              animate={{ 
+                opacity: 1,
+                transform: 'perspective(1000px) rotateY(0) translateZ(0)' 
+              }}
+              exit={{ 
+                opacity: 0,
+                transform: `perspective(1000px) rotateY(${slideDirection === 'right' ? '30deg' : '-30deg'}) translateZ(-100px)` 
+              }}
+              transition={{ 
+                duration: 0.6,
+                ease: [0.23, 1, 0.32, 1]
+              }}
+              className="text-center transform-style-preserve-3d backface-hidden"
             >
               <motion.div
-                className="w-16 h-16 mx-auto bg-gradient-to-br from-purple-600 to-pink-500 rounded-full flex items-center justify-center mb-4"
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+                className="w-16 h-16 mx-auto bg-gradient-to-br from-purple-600 to-pink-500 rounded-full flex items-center justify-center mb-4 shadow-smooth"
+                animate={{ 
+                  scale: [1, 1.05, 1],
+                  rotateY: [0, 5, 0],
+                  rotateX: [0, 5, 0]
+                }}
+                transition={{ 
+                  duration: 2,
+                  repeat: Number.POSITIVE_INFINITY,
+                  ease: "easeInOut"
+                }}
               >
                 <div className="text-white w-8 h-8">{steps.find((step) => step.id === activeStep)?.icon}</div>
               </motion.div>
@@ -121,8 +147,10 @@ const ApproachSection = () => {
                 {steps.map((step) => (
                   <button
                     key={step.id}
-                    className={`w-2 h-2 rounded-full ${activeStep === step.id ? "bg-purple-500" : "bg-white/30"}`}
-                    onClick={() => setActiveStep(step.id)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 hover:bg-purple-400 ${
+                      activeStep === step.id ? "bg-purple-500 w-6" : "bg-white/30"
+                    }`}
+                    onClick={() => handleStepChange(step.id)}
                   />
                 ))}
               </div>
